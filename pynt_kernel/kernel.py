@@ -6,7 +6,22 @@ from ipykernel.ipkernel import IPythonKernel
 
 class PyntKernel(IPythonKernel):
     def do_execute(self, code, silent, store_history=True, user_expressions=None, allow_stdin=False):
-        """
+        """Execute `code`
+
+        If a code cell is of the form ***N*** then do not send it the kernel.
+        Rather establish a connection to the kernel with a file kernel-N.json.
+
+        Otherwise take code and wrap it in a call to
+        `client.execute_interactive()`. For example the code
+
+            'x = 5'
+
+        would become
+
+            'client.execute_interactive("x = 5")'
+
+        In order to get the syntax right use AST + ASTOR to make the macro
+        change.
 
         >>> from kernel import PyntKernel
         >>> self = PyntKernel()
