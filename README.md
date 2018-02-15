@@ -8,7 +8,8 @@ http://jupyter-client.readthedocs.io/en/latest/wrapperkernels.html
 
 Installation
 ------------
-To install ``pynt_kernel`` locally::
+
+To install ``pynt_kernel`` locally.
 
 ```shell
 pip install pynt_kernel
